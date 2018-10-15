@@ -10,6 +10,8 @@ admin can login/ upload test / and see stats of quiz taken by student
 
 **Stack** : Express + Node + MongoDB
 
+**DB Files** : /data/quizzes.json, /data/users.json , /data/scores.json
+
 ## Index Page
 ![Index Page](https://github.com/polsumeet3666/OnlineQuiz/blob/master/images/ol-index.png)
 
