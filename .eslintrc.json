@@ -1,0 +1,20 @@
+{ 
+    "extends": "airbnb-base",
+    "rules": {
+        "indent":"off",
+        "sort-imports":"off",
+        "no-console":"off"   
+    },
+    "globals": {
+        "mongoClient":true
+    },
+    "parserOptions": {
+      "sourceType": "module",
+      "ecmaVersion": 6
+    },
+    "env": {
+        "es6": true,
+        "browser": true
+    }
+   
+}

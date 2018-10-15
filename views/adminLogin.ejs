@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    <%= title %>
+  </title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel="stylesheet" href="/stylesheets/bootstrap.min.css" />
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <!-- <link rel='stylesheet' href='/fontawesome/css/all.css' /> -->
+  <script src="/javascripts/bootstrap.min.js"></script>
+</head>
+
+<body class="text-center">
+  <!-- <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p> -->
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#">Online Quiz</a>
+  </nav>
+  
+    <form class="form-signin" method="POST" action="/admin/login">
+      
+      <h1 class="h3 mb-3 font-weight-normal">Admin sign in</h1>
+      <% if (errorMsg == true)
+        { 
+      %>
+      <div class="alert alert-danger" role="alert">
+       Invalid Username /Password
+      </div>
+      <%
+    }
+      %>
+      <label for="inputEmail" class="sr-only">Email address</label>
+      <input id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="" type="email" name="email">
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input id="inputPassword" class="form-control" placeholder="Password" required="" type="password" name="password">
+      
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      <p class="mt-5 mb-3 text-muted">© 2017-2018</p>
+    </form>
+  
+
+</body>
+
+</html>

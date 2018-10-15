@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    <%= title %>
+  </title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <!-- <link rel="stylesheet" href="/stylesheets/bootstrap.min.css" />
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel='stylesheet' href='/fontawesome/css/all.css' /> 
+  <script src="/javascripts/bootstrap.min.js"></script> -->
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+
+</head>
+
+<body>
+  <!-- <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p> -->
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#">Online Quiz</a>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Welcome <%= user.username %> <span class="sr-only">(current)</span></a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="#">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Pricing</a>
+        </li> -->
+      </ul>
+      <span class="navbar-text">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/admin/logout"> Logout</a>
+          </li>
+        </ul> 
+      </span>
+    </div>
+  </nav>
+  <div class="container-fluid" role="main" style="margin-top:2.5rem">
+    <div class="row">
+      <div class="col-md-2"><h3>Dashboard</h3></div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-2" style="margin-top:5px"><h4>Total Quiz : <%= quiz.length%> </h4></div>
+      <div class="col-md-2">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+              Upload Test File
+            </button>
+            
+      </div>
+      <div class="col-md-2">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#stats">
+              Quiz Stats
+             </button>
+      </div>
+      
+    </div>
+    
+    <div class="row">
+      <div class="col-md-12">
+
+        <% 
+          quiz.forEach(q => {
+            %>
+            <div class="card" style="float:left; margin:1rem;width: 18rem;">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><%= q.quizname %></h5>
+                  <p class="card-text">This is description for <%= q.quizname %> online test.</p>
+                  <p class="card-text">Quiz Attempt Count : <%= q.attempt %></p>
+                  <a href="#" class="btn btn-primary"> Details</a>
+                </div>
+              </div>
+         <%   });
+        %>
+       
+
+      </div> <!-- col end--> 
+      
+    </div>
+
+
+  </div> <!-- container-fluid end -->
+  <!-- modals -->
+  <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Upload Test</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form action="/admin/uploadTest" method="post" enctype="multipart/form-data" >
+                <div class="form-group">
+                  <label for="exampleFormControlFile1">Upload Test JSON File</label>
+                  <input name="test" type="file" class="form-control-file" id="exampleFormControlFile1" accept="*.json">
+                </div>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <input type="submit" class="btn btn-primary" value="Save Changes"></button>
+              </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="stats" tabindex="-1" role="dialog" aria-labelledby="stats" aria-hidden="true">
+    
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Quiz Stats</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+            <div class="row">
+              <div class="col-md-4">Quiz Name</div>
+              <div class="col-md-6">User</div>
+              <div class="col-md-2">Score</div>
+            </div>
+             <% if (scoreData.length == 0) { %>
+              <div class="row">
+                  <div class="col-md-12"> No Stats Avalibale</div>
+                </div>
+            <% }
+             else {
+              scoreData.forEach(s => { %>
+                  <div class="row">
+                      <div class="col-md-4"> <%= s.quizname%></div>
+                      <div class="col-md-6"> <%= s.email%></div>
+                      <div class="col-md-2"> <%= s.scoreWithTotal%></div>
+                    </div>
+              <%  })
+
+             }%>
+           
+              
+                    <!-- <label for="exampleFormControlFile1">Upload Tesadasdsdast JSON File</label> -->
+               
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

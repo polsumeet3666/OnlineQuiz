@@ -1,0 +1,15 @@
+import { Router } from 'express';
+
+const router = Router();
+
+/* GET home page. */
+router.get('/', (req, res, next) => {
+  res.render('index', {
+    title: 'Express',
+    loginError: false,
+    signupError: false,
+    signupSuccess: false,
+  });
+});
+
+export default router;

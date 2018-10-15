@@ -1,0 +1,27 @@
+
+    {
+        "quizname":"Javascript Ch 02",
+        "questions":[
+            {
+                "id":1,
+                "question":"Inside which HTML element do we put the JavaScript?",
+                "options":["javascript tag","js tag","scripting tag","script tag"],
+                "correct":"script tag"
+            },
+            {   "id":2,
+                "question":"How do you round the number 7.25, to the nearest integer?",
+                "options":["Math.round(7.25)","rnd(7.25)"," round(7.25)","Math.rnd(7.25)"],
+                "correct":"Math.round(7.25)"
+            },
+            {
+                "id":3,
+                "question":"How do you find the number with the highest value of x and y?",
+                "options":["Math.max(x, y)","top(x, y)","ceil(x, y)","Math.ceil(x, y)"],
+                "correct":"Math.max(x, y)"
+            }
+
+        ],
+        "attempt":0
+    }
+    
+
